@@ -44,7 +44,18 @@ def murklanScheme(place) :
                                   AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ]     # off at 22:30
              }
     return scheme
-                                                                                             
+
+def update_lamps() :
+    tz = tzlocal.get_localzone()
+    place = Place(nkpCoord())
+    place.findSunTimes()
+
+    scheme = murklanScheme(place)
+    lamp = Lamp(1)
+
+    lamp.update(datetime.datetime().now().timetz(), scheme[1])
+
+    
 
 def test_interval() :
     tz = pytz.utc
