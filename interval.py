@@ -16,7 +16,7 @@ class SunTimepoint :
         self.suntime = suntime
 
     # time: datetime.time
-    def after(self, time) :        
+    def after(self, time) :
         return time > (self.suntime + self.offset).timetz()
 
     # time: datetime.time
@@ -29,7 +29,7 @@ class SunriseTimepoint(SunTimepoint) :
     # offset: datetime.timedelta
     # place: Place
     def __init__(self, offset, place) :
-        SunTimepoint.__init__(self, offset, place.sunrise)
+        SunTimepoint.__init__(self, offset, place.sunrise_local)
 
 
 class SunsetTimepoint(SunTimepoint) :
@@ -37,7 +37,7 @@ class SunsetTimepoint(SunTimepoint) :
     # offset: datetime.timedelta
     # place: Place
     def __init__(self, offset, place) :
-        SunTimepoint.__init__(self, offset, place.sunset)
+        SunTimepoint.__init__(self, offset, place.sunset_local)
 
     
 class AbsoluteTimepoint :

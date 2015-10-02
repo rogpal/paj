@@ -10,6 +10,7 @@ from place import nkpCoord
 from interval import TimeInterval
 from interval import SunriseTimepoint
 from interval import AbsoluteTimepoint
+from interval import SunsetTimepoint
 
 
 
@@ -24,12 +25,15 @@ class Lamp :
         call(['tdtool', '--off', str(self.index)])
 
     def update(self, time, lampscheme) :
-        for interval in lampscheme :            
-            if( interval.within(datetime.datetime.now(pytz.utc)) ) :
-                on(self)
-            else :
-                off(self)
-
+        on = False
+        for interval in lampscheme :
+            if( interval.within(time) ) :
+                on = True
+                
+        if( on ) :
+            self.on()
+        else :
+            self.off()
 
 
 def murklanScheme(place) :
@@ -67,7 +71,7 @@ def test_lamp() :
     lamp.update(datetime.time(12, 10, 5, 0, tz), scheme[1])
     test_wait("Lamp expected to be OFF. Press enter to continue.")
     
-    lamp.update(datetime.time(6, 10, 5, 0, tz), scheme[1])
+    lamp.update(datetime.time(5, 50, 5, 0, tz), scheme[1])
     test_wait("Lamp expected to be OFF. Press enter to continue.")
     
     lamp.update(datetime.time(6, 30, 5, 0, tz), scheme[1])
@@ -95,9 +99,4 @@ def test_lamp() :
 def test_wait(s) :
     raw_input(s)
     
-    
-
-
-
-
     
