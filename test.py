@@ -14,9 +14,8 @@ from interval import AbsoluteTimepoint
 
 
 class Lamp :
-    def __init__(self, index, place) :
+    def __init__(self, index) :
         self.index = index
-        self.place = place
 
     def on(self) :
         call(['tdtool', '--on', str(self.index)])
@@ -33,10 +32,8 @@ class Lamp :
 
 
 
-def murklanScheme()
+def murklanScheme(place) :
     tz = tzlocal.get_localzone()
-    place = Place(nkpCoord())
-    place.findSunTimes()
     scheme = { 1 : [ TimeInterval(SunriseTimepoint(datetime.timedelta(hours = -1), place),  # on 1 hour before sunrise,
                                   AbsoluteTimepoint(datetime.time(9, 0, 0, 0, tz))),        # off at 09:00
                      TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = 30), place), # on 1/2 hour after sunset,
@@ -57,3 +54,50 @@ def test_interval() :
     print str(interval.within(datetime.time(8, 10, 5, 0, tz))) + ' expected true.'
     
 
+# assumes sunrise at 07:00 and sunset at 18:22
+# should really have a test that is independent from which day it is run...
+def test_lamp() :
+    tz = tzlocal.get_localzone()
+    place = Place(nkpCoord())
+    place.findSunTimes()
+
+    scheme = murklanScheme(place)
+    lamp = Lamp(1)
+
+    lamp.update(datetime.time(12, 10, 5, 0, tz), scheme[1])
+    test_wait("Lamp expected to be OFF. Press enter to continue.")
+    
+    lamp.update(datetime.time(6, 10, 5, 0, tz), scheme[1])
+    test_wait("Lamp expected to be OFF. Press enter to continue.")
+    
+    lamp.update(datetime.time(6, 30, 5, 0, tz), scheme[1])
+    test_wait("Lamp expected to be ON. Press enter to continue.")
+    
+    lamp.update(datetime.time(8, 30, 5, 0, tz), scheme[1])
+    test_wait("Lamp expected to be ON. Press enter to continue.")
+    
+    lamp.update(datetime.time(9, 10, 5, 0, tz), scheme[1])
+    test_wait("Lamp expected to be OFF. Press enter to continue.")
+    
+    lamp.update(datetime.time(18, 40, 5, 0, tz), scheme[1])         # after sunset but within offset
+    test_wait("Lamp expected to be OFF. Press enter to continue.")
+    
+    lamp.update(datetime.time(18, 59, 5, 0, tz), scheme[1])
+    test_wait("Lamp expected to be ON. Press enter to continue.")
+    
+    lamp.update(datetime.time(22, 29, 5, 0, tz), scheme[1])
+    test_wait("Lamp expected to be ON. Press enter to continue.")
+    
+    lamp.update(datetime.time(22, 30, 5, 0, tz), scheme[1])
+    test_wait("Lamp expected to be OFF. Press enter to continue.")
+
+
+def test_wait(s) :
+    raw_input(s)
+    
+    
+
+
+
+
+    

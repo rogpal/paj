@@ -10,21 +10,34 @@ class TimepointMode(Enum) :
     absolute = 3
 
 
-class SunriseTimepoint :
+class SunTimepoint :
+    def __init__(self, offset, suntime) :
+        self.offset = offset
+        self.suntime = suntime
+
+    # time: datetime.time
+    def after(self, time) :        
+        return time > (self.suntime + self.offset).timetz()
+
+    # time: datetime.time
+    def before(self, time) :
+        return time < (self.suntime - self.offset).timetz()
+
+
+class SunriseTimepoint(SunTimepoint) :
 
     # offset: datetime.timedelta
     # place: Place
     def __init__(self, offset, place) :
-        self.offset = offset
-        self.place = place
+        SunTimepoint.__init__(self, offset, place.sunrise)
 
-    # time: datetime.time
-    def after(self, time) :        
-        return time > (self.place.sunrise + self.offset).timetz()
 
-    # time: datetime.time
-    def before(self, time) :
-        return time < (self.sunrise - self.offset).timetz()
+class SunsetTimepoint(SunTimepoint) :
+
+    # offset: datetime.timedelta
+    # place: Place
+    def __init__(self, offset, place) :
+        SunTimepoint.__init__(self, offset, place.sunset)
 
     
 class AbsoluteTimepoint :
