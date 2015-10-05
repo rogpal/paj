@@ -50,3 +50,4 @@ def isSunUp() :
     place = Place(nkpCoord())
     place.findSunTimes()
     return place.isSunUp()
+
