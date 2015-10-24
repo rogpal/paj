@@ -18,13 +18,19 @@ class Place :
     # findSunTimes
     # sets internal sun times from external service
     # times will be based on todays date
-    def findSunTimes(self) :
-        response = urllib2.urlopen('http://api.sunrise-sunset.org/json?lat=' +
-                                   self.coord.lat + '&lng=' + self.coord.lng + '&formatted=0')
+    def findSunTimes(self, date = None) :
+        url = 'http://api.sunrise-sunset.org/json?lat=' + \
+              self.coord.lat + '&lng=' + self.coord.lng + \
+              '&formatted=0'
+        if not (date is None):
+            url += '&date=' + date.ctime()
+        response = urllib2.urlopen(url)
         html = response.read()
         j = json.loads(html)
-        self.sunrise = pytz.utc.localize(datetime.datetime.strptime(j['results']['sunrise'], '%Y-%m-%dT%H:%M:%S+00:00'))
-        self.sunset = pytz.utc.localize(datetime.datetime.strptime(j['results']['sunset'], '%Y-%m-%dT%H:%M:%S+00:00'))
+        self.sunrise = pytz.utc.localize(datetime.datetime.strptime(j['results']['sunrise'],
+                                         '%Y-%m-%dT%H:%M:%S+00:00'))
+        self.sunset = pytz.utc.localize(datetime.datetime.strptime(j['results']['sunset'],
+                                        '%Y-%m-%dT%H:%M:%S+00:00'))
         self.sunrise_local = self.sunrise.astimezone(self.tz)
         self.sunset_local = self.sunset.astimezone(self.tz)
 

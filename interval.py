@@ -39,6 +39,7 @@ class SunsetTimepoint(SunTimepoint) :
     def __init__(self, offset, place) :
         SunTimepoint.__init__(self, offset, place.sunset_local)
 
+
     
 class AbsoluteTimepoint :
 
@@ -53,6 +54,30 @@ class AbsoluteTimepoint :
     # time: datetime:time
     def before(self, time) :
         return time < self.time
+
+
+class DarkAndAfter:
+    def __init__(self, time, place):
+        self.time = time
+        self.place = place
+
+    def after(self, time):
+        return time > self.time and not self.place.isSunUp()
+
+    def before(self, time):
+        return not self.after(time)
+
+
+class LightOrAfter:
+    def __init__(self, time, place):
+        self.time = time
+        self.place = place
+
+    def after(self, time):
+        return time > self.time or self.place.isSunUp()
+
+    def before(self, time):
+        return not self.after(time)
 
 
 class TimeInterval :

@@ -55,9 +55,6 @@ class Lamp :
 
 
 def update(scheme) :
-    tz = tzlocal.get_localzone()
-    place = Place(nkpCoord())
-    place.findSunTimes()
     present = datetime.datetime.now().timetz()
 
     # if there is a file, use it
