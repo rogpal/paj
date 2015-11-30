@@ -71,7 +71,7 @@ def update(scheme) :
                     lamps.append(lamp)
     else:
         # no file, so create default list
-        lamps = [ Lamp(1), Lamp(2), Lamp(3), Lamp(4) ]
+        lamps = [ Lamp(1), Lamp(2), Lamp(3), Lamp(4), Lamp(5), Lamp(6), Lamp(7) ]
 
     for lamp in lamps :
         lamp.update(present, scheme[lamp.index])

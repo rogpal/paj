@@ -33,6 +33,20 @@ def murklanScheme(place) :
 
                # akvarium
                5 : [ TimeInterval(AbsoluteTimepoint(datetime.time(7, 0, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(23, 0, 0, 0, tz))) ]
+                                  AbsoluteTimepoint(datetime.time(23, 0, 0, 0, tz))) ],
+
+	       # christmas stuff
+               6 : [ TimeInterval(AbsoluteTimepoint(datetime.time(6, 50, 0, 0, tz)),
+                                  AbsoluteTimepoint(datetime.time(8, 0, 0, 0, tz))),
+                     TimeInterval(AbsoluteTimepoint(datetime.time(16, 2, 0, 0, tz)),
+                                  AbsoluteTimepoint(datetime.time(22, 15, 0, 0, tz))) ],
+
+
+               7 : [ TimeInterval(AbsoluteTimepoint(datetime.time(6, 40, 0, 0, tz)),
+                                  AbsoluteTimepoint(datetime.time(8, 5, 0, 0, tz))),
+                     TimeInterval(AbsoluteTimepoint(datetime.time(16, 5, 0, 0, tz)),
+                                  AbsoluteTimepoint(datetime.time(22, 20, 0, 0, tz))) ]
+
+
              }
     return scheme
