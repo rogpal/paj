@@ -8,6 +8,7 @@ import pytz
 import tzlocal
 import os.path
 import json
+import time
 
 class LampMode(Enum) :
     unknown = 1
@@ -16,15 +17,22 @@ class LampMode(Enum) :
 
 
 class Lamp :
-    def __init__(self, index) :
+    def __init__(self, index, tries = 1) :
         self.index = index
         self.mode = LampMode.unknown
+	self.tries = tries
 
     def on(self) :
-        call(['tdtool', '--on', str(self.index)])
+	for x in range(self.tries):
+            call(['tdtool', '--on', str(self.index)])
+            if x < self.tries - 1:
+                time.sleep(1)
 
     def off(self) :
-        call(['tdtool', '--off', str(self.index)])
+        for x in range(self.tries):
+            call(['tdtool', '--off', str(self.index)])
+	    if x < self.tries - 1:
+	        time.sleep(1)
 
     def update(self, time, lampscheme) :
         on = False
@@ -71,7 +79,7 @@ def update(scheme) :
                     lamps.append(lamp)
     else:
         # no file, so create default list
-        lamps = [ Lamp(1), Lamp(2), Lamp(3), Lamp(4), Lamp(5), Lamp(6), Lamp(7) ]
+        lamps = [ Lamp(1), Lamp(2), Lamp(3), Lamp(4), Lamp(5), Lamp(6,3), Lamp(7,3), Lamp(8), Lamp(9) ]
 
     for lamp in lamps :
         lamp.update(present, scheme[lamp.index])

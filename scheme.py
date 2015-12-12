@@ -33,19 +33,31 @@ def murklanScheme(place) :
 
                # akvarium
                5 : [ TimeInterval(AbsoluteTimepoint(datetime.time(7, 0, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(23, 0, 0, 0, tz))) ],
+                                  AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ],
 
 	       # christmas stuff
                6 : [ TimeInterval(AbsoluteTimepoint(datetime.time(6, 50, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(8, 0, 0, 0, tz))),
-                     TimeInterval(AbsoluteTimepoint(datetime.time(16, 2, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(22, 15, 0, 0, tz))) ],
+                                  AbsoluteTimepoint(datetime.time(8, 39, 0, 0, tz))),
+                     TimeInterval(AbsoluteTimepoint(datetime.time(15, 30, 0, 0, tz)),
+                                  AbsoluteTimepoint(datetime.time(22, 10, 0, 0, tz))) ],
 
 
                7 : [ TimeInterval(AbsoluteTimepoint(datetime.time(6, 40, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(8, 5, 0, 0, tz))),
-                     TimeInterval(AbsoluteTimepoint(datetime.time(16, 5, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(22, 20, 0, 0, tz))) ]
+                                  AbsoluteTimepoint(datetime.time(8, 30, 0, 0, tz))),
+                     TimeInterval(AbsoluteTimepoint(datetime.time(15, 30, 0, 0, tz)),
+                                  AbsoluteTimepoint(datetime.time(22, 20, 0, 0, tz))) ],
+
+	       # Julia
+               8 : [ TimeInterval(AbsoluteTimepoint(datetime.time(7, 0, 0, 0, tz)),
+                                  AbsoluteTimepoint(datetime.time(8, 0, 0, 0, tz))),
+                     TimeInterval(AbsoluteTimepoint(datetime.time(15, 30, 0, 0, tz)),
+                                  AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ],
+
+	       # Ludvig
+               9 : [ TimeInterval(AbsoluteTimepoint(datetime.time(17, 0, 0, 0, tz)),
+                                  AbsoluteTimepoint(datetime.time(22, 0, 0, 0, tz))) ]
+
+
 
 
              }
