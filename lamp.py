@@ -26,13 +26,13 @@ class Lamp :
 	for x in range(self.tries):
             call(['tdtool', '--on', str(self.index)])
             if x < self.tries - 1:
-                time.sleep(1)
+                time.sleep(2)
 
     def off(self) :
         for x in range(self.tries):
             call(['tdtool', '--off', str(self.index)])
 	    if x < self.tries - 1:
-	        time.sleep(1)
+	        time.sleep(2)
 
     def update(self, time, lampscheme) :
         on = False
@@ -64,6 +64,7 @@ class Lamp :
 
 def update(scheme) :
     present = datetime.datetime.now().timetz()
+    weekday = datetime.datetime.today().weekday()
 
     # if there is a file, use it
     filename = 'lamp.db'
@@ -81,8 +82,13 @@ def update(scheme) :
         # no file, so create default list
         lamps = [ Lamp(1), Lamp(2), Lamp(3), Lamp(4), Lamp(5), Lamp(6,3), Lamp(7,3), Lamp(8), Lamp(9) ]
 
+    # select scheme based on weekday
+    for weekscheme in scheme:
+        if weekday in weekscheme[0]:
+            dayscheme = weekscheme[1]
+
     for lamp in lamps :
-        lamp.update(present, scheme[lamp.index])
+        lamp.update(present, dayscheme[lamp.index])
 
     # persist the updated state
     with open(filename, 'w') as file:
