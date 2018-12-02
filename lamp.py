@@ -80,7 +80,7 @@ def update(scheme) :
                     lamps.append(lamp)
     else:
         # no file, so create default list
-        lamps = [ Lamp(1), Lamp(2), Lamp(3), Lamp(4), Lamp(5), Lamp(6,3), Lamp(7,3), Lamp(8), Lamp(9) ]
+        lamps = [ Lamp(1), Lamp(2), Lamp(3), Lamp(4), Lamp(5), Lamp(6,3), Lamp(7,3), Lamp(8), Lamp(9), Lamp(10), Lamp(11), Lamp(12), Lamp(13) ]
 
     # select scheme based on weekday
     for weekscheme in scheme:

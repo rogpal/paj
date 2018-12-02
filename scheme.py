@@ -51,7 +51,7 @@ def murklanScheme(place) :
                # Front right
                3 : [ TimeInterval(DarkAndAfter(datetime.time(7, 30, 0, 0, tz), place),         # on at 7:30 and dark
                                   LightOrAfter(datetime.time(9, 0, 0, 0, tz), place)),         # of at 9:00 or sunrise
-                     TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = 1), place),     # on 1 minute after sunset
+                     TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = -15), place),     # on 1 minute after sunset
                                   AbsoluteTimepoint(datetime.time(23, 0, 0, 0, tz))) ],        # off at 23:00
 
                # outside corner
@@ -66,23 +66,42 @@ def murklanScheme(place) :
                6 : [ TimeInterval(AbsoluteTimepoint(datetime.time(7, 30, 0, 0, tz)),
                                   AbsoluteTimepoint(datetime.time(9, 39, 0, 0, tz))),
                      TimeInterval(AbsoluteTimepoint(datetime.time(15, 30, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(22, 10, 0, 0, tz))) ],
+                                  AbsoluteTimepoint(datetime.time(23, 56, 0, 0, tz))) ],
 
 
                7 : [ TimeInterval(AbsoluteTimepoint(datetime.time(7, 40, 0, 0, tz)),
                                   AbsoluteTimepoint(datetime.time(9, 30, 0, 0, tz))),
                      TimeInterval(AbsoluteTimepoint(datetime.time(15, 30, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(22, 20, 0, 0, tz))) ],
+                                  AbsoluteTimepoint(datetime.time(23, 56, 0, 0, tz))) ],
 
 	       # Julia
-               8 : [ TimeInterval(AbsoluteTimepoint(datetime.time(7, 0, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(8, 0, 0, 0, tz))),
-                     TimeInterval(AbsoluteTimepoint(datetime.time(15, 30, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ],
+               8 : [ TimeInterval(DarkAndAfter(datetime.time(8, 0, 0, 0, tz), place),
+                                  AbsoluteTimepoint(datetime.time(10, 0, 0, 0, tz))),
+                     TimeInterval(DarkAndAfter(datetime.time(15, 0, 0, 0, tz), place),
+                                  AbsoluteTimepoint(datetime.time(22, 0, 0, 0, tz))) ],
 
 	       # Ludvig
-               9 : [ TimeInterval(AbsoluteTimepoint(datetime.time(17, 0, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(22, 0, 0, 0, tz))) ]
+               9 : [ TimeInterval(AbsoluteTimepoint(datetime.time(16, 05, 0, 0, tz)),
+                                  AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ],
+
+               # Dragon foot
+               10 : [ TimeInterval(DarkAndAfter(datetime.time(18, 00, 0, 0, tz), place),          # on at 18:00 and dark
+                                   AbsoluteTimepoint(datetime.time(21, 30, 0, 0, tz))) ],         # off at 21:30
+
+               # Outside
+               11 : [ TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = 0), place),       # on at sunset
+                                   AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ],          # off at 22:30
+
+               # Star
+               12 : [ TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = 0), place),       # on at sunset
+                                   AbsoluteTimepoint(datetime.time(22, 00, 0, 0, tz))) ],          # off at 22:00
+
+
+               # Outside back
+               13 : [ TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = -30), place),       # on half hour before sunset
+                                   AbsoluteTimepoint(datetime.time(23, 00, 0, 0, tz))) ]            # off at 23:00
+
+
              }
 
 
@@ -94,14 +113,18 @@ def murklanScheme(place) :
                      TimeInterval(DarkAndAfter(datetime.time(17, 0, 0, 0, tz),  place),     # on if it is dark and after 17,
                                   AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ],    # off at 22:30
 
+
                # Front left
-               2 : [ TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = 15), place), # on 15 mins after sunset
-                     AbsoluteTimepoint(datetime.time(22, 35, 0, 0, tz))) ],                 # off at 22:35
+               2 : [ TimeInterval(AbsoluteTimepoint(datetime.time(6, 10, 0, 0, tz)),           # on at 6.15
+                                  LightOrAfter(datetime.time(7, 30, 0, 0, tz), place)),        # of at 7:30 or sunrise
+                     TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = -15), place),     # on 1 minute after sunset
+                                  AbsoluteTimepoint(datetime.time(23, 15, 0, 0, tz))) ],        # off at 23:00
+
 
                # Front right
                3 : [ TimeInterval(AbsoluteTimepoint(datetime.time(6, 15, 0, 0, tz)),           # on at 6.15
                                   LightOrAfter(datetime.time(7, 30, 0, 0, tz), place)),        # of at 7:30 or sunrise
-                     TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = 1), place),     # on 1 minute after sunset
+                     TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = -15), place),     # on 1 minute after sunset
                                   AbsoluteTimepoint(datetime.time(23, 0, 0, 0, tz))) ],        # off at 23:00
 
                # outside corner
@@ -113,26 +136,44 @@ def murklanScheme(place) :
                                   AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ],
 
 	       # christmas stuff
-               6 : [ TimeInterval(AbsoluteTimepoint(datetime.time(6, 50, 0, 0, tz)),
+               6 : [ TimeInterval(AbsoluteTimepoint(datetime.time(6, 10, 0, 0, tz)),
                                   AbsoluteTimepoint(datetime.time(8, 39, 0, 0, tz))),
                      TimeInterval(AbsoluteTimepoint(datetime.time(15, 30, 0, 0, tz)),
                                   AbsoluteTimepoint(datetime.time(22, 10, 0, 0, tz))) ],
 
 
-               7 : [ TimeInterval(AbsoluteTimepoint(datetime.time(6, 40, 0, 0, tz)),
+               7 : [ TimeInterval(AbsoluteTimepoint(datetime.time(6, 20, 0, 0, tz)),
                                   AbsoluteTimepoint(datetime.time(8, 30, 0, 0, tz))),
                      TimeInterval(AbsoluteTimepoint(datetime.time(15, 30, 0, 0, tz)),
                                   AbsoluteTimepoint(datetime.time(22, 20, 0, 0, tz))) ],
 
 	       # Julia
-               8 : [ TimeInterval(AbsoluteTimepoint(datetime.time(7, 0, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(8, 0, 0, 0, tz))),
-                     TimeInterval(AbsoluteTimepoint(datetime.time(15, 30, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ],
+               8 : [ TimeInterval(DarkAndAfter(datetime.time(6, 0, 0, 0, tz), place),
+                                  AbsoluteTimepoint(datetime.time(7, 30, 0, 0, tz))),
+                     TimeInterval(DarkAndAfter(datetime.time(15, 0, 0, 0, tz), place),
+                                  AbsoluteTimepoint(datetime.time(21, 30, 0, 0, tz))) ],
 
 	       # Ludvig
-               9 : [ TimeInterval(AbsoluteTimepoint(datetime.time(17, 0, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(22, 0, 0, 0, tz))) ]
+               9 : [ TimeInterval(AbsoluteTimepoint(datetime.time(16, 10, 0, 0, tz)),
+                                  AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ],
+
+               # Dragon foot
+               10 : [ TimeInterval(DarkAndAfter(datetime.time(18, 00, 0, 0, tz), place),     # on at 18:00 and dark
+                                   AbsoluteTimepoint(datetime.time(21, 30, 0, 0, tz))) ],    # off at 21:30
+
+               # Outside
+               11 : [ TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = 0), place),  # on at sunset
+                                   AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))),      # off at 22:30
+                      TimeInterval(DarkAndAfter(datetime.time(6, 15, 0, 0, tz), place),
+                                   AbsoluteTimepoint(datetime.time(7, 15, 0, 0, tz))) ],
+               # Star
+               12 : [ TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = 0), place),       # on at sunset
+                                   AbsoluteTimepoint(datetime.time(22, 00, 0, 0, tz))) ],         # off at 22:00
+
+               # Outside back
+               13 : [ TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = -30), place),       # on half hour before sunset
+                                   AbsoluteTimepoint(datetime.time(23, 00, 0, 0, tz))) ]            # off at 23:00
+
 
              }
 
