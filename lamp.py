@@ -3,6 +3,7 @@ from place import Place
 
 from enum import Enum
 from subprocess import call
+import interval
 import datetime
 import pytz
 import tzlocal
@@ -10,20 +11,20 @@ import os.path
 import json
 import time
 
-class LampMode(Enum) :
-    unknown = 1
-    on = 2
-    off = 3    
+class LampMode(str, Enum) :
+    unknown = "unknown"
+    on = "on"
+    off = "off"
 
 
 class Lamp :
     def __init__(self, index, tries = 1) :
         self.index = index
         self.mode = LampMode.unknown
-	self.tries = tries
+        self.tries = tries
 
     def on(self) :
-	for x in range(self.tries):
+        for x in range(self.tries):
             call(['tdtool', '--on', str(self.index)])
             if x < self.tries - 1:
                 time.sleep(2)
@@ -31,13 +32,14 @@ class Lamp :
     def off(self) :
         for x in range(self.tries):
             call(['tdtool', '--off', str(self.index)])
-	    if x < self.tries - 1:
-	        time.sleep(2)
+            if x < self.tries - 1:
+                time.sleep(2)
 
     def update(self, time, lampscheme) :
+        print("Updating with " + str(lampscheme))
         on = False
         for interval in lampscheme :
-            if( interval.within(time) ) :
+            if(interval.within(time) ) :
                 on = True
                 
         if( on ) :

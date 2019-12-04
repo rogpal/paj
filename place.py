@@ -1,5 +1,5 @@
 import json
-import urllib2
+import urllib.request
 
 import datetime
 import pytz
@@ -24,7 +24,7 @@ class Place :
               '&formatted=0'
         if not (date is None):
             url += '&date=' + date.ctime()
-        response = urllib2.urlopen(url)
+        response = urllib.request.urlopen(url)
         html = response.read()
         j = json.loads(html)
         self.sunrise = pytz.utc.localize(datetime.datetime.strptime(j['results']['sunrise'],

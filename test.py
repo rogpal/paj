@@ -13,7 +13,7 @@ from interval import AbsoluteTimepoint
 from interval import SunsetTimepoint
 
 from scheme import murklanScheme
-                                                                                             
+
 
 def test_serialize() :
     lamp1 = Lamp(1)
@@ -38,8 +38,8 @@ def test_serialize() :
     lamp1b = lamps[0]
     lamp2b = lamps[1]
 
-    print str(lamp1b.mode) + " supposed to be on."
-    print str(lamp2b.mode) + " supposed to be off."
+    print (str(lamp1b.mode) + " supposed to be on.")
+    print (str(lamp2b.mode) + " supposed to be off.")
 
 
 
@@ -49,10 +49,10 @@ def test_interval() :
     place.findSunTimes()
     interval = TimeInterval(SunriseTimepoint(datetime.timedelta(hours = 1), place),
                             AbsoluteTimepoint(datetime.time(13, 10, 5, 0, tz)))
-    print str(interval.within(datetime.time(12, 10, 5, 0, tz))) + ' expected true.'
-    print str(interval.within(datetime.time(13, 10, 6, 0, tz))) + ' expected false.'
-    print str(interval.within(datetime.time(5, 10, 5, 0, tz))) + ' expected false.'
-    print str(interval.within(datetime.time(8, 10, 5, 0, tz))) + ' expected true.'
+    print (str(interval.within(datetime.time(12, 10, 5, 0, tz))) + ' expected true.')
+    print (str(interval.within(datetime.time(13, 10, 6, 0, tz))) + ' expected false.')
+    print (str(interval.within(datetime.time(5, 10, 5, 0, tz))) + ' expected false.')
+    print (str(interval.within(datetime.time(9, 50, 5, 0, tz))) + ' expected true.')
     
 
 # assumes sunrise at 07:00 and sunset at 18:22
@@ -65,7 +65,7 @@ def test_lamp() :
     scheme = murklanScheme(place)
     lamp = Lamp(1)
 
-    lamp.update(datetime.time(12, 10, 5, 0, tz), scheme[1])
+    lamp.update(datetime.time(12, 10, 5, 0, tz), scheme[1][1][1])
     test_wait("Lamp expected to be OFF. Press enter to continue.")
     
     lamp.update(datetime.time(5, 50, 5, 0, tz), scheme[1])

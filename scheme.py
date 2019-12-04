@@ -81,11 +81,11 @@ def murklanScheme(place) :
                                   AbsoluteTimepoint(datetime.time(22, 0, 0, 0, tz))) ],
 
 	       # Ludvig
-               9 : [ TimeInterval(AbsoluteTimepoint(datetime.time(16, 05, 0, 0, tz)),
+               9 : [ TimeInterval(AbsoluteTimepoint(datetime.time(16, 5, 0, 0, tz)),
                                   AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ],
 
                # Dragon foot
-               10 : [ TimeInterval(DarkAndAfter(datetime.time(18, 00, 0, 0, tz), place),          # on at 18:00 and dark
+               10 : [ TimeInterval(DarkAndAfter(datetime.time(18, 0, 0, 0, tz), place),          # on at 18:00 and dark
                                    AbsoluteTimepoint(datetime.time(21, 30, 0, 0, tz))) ],         # off at 21:30
 
                # Outside
