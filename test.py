@@ -68,33 +68,33 @@ def test_lamp() :
     lamp.update(datetime.time(12, 10, 5, 0, tz), scheme[1][1][1])
     test_wait("Lamp expected to be OFF. Press enter to continue.")
     
-    lamp.update(datetime.time(5, 50, 5, 0, tz), scheme[1])
+    lamp.update(datetime.time(5, 50, 5, 0, tz), scheme[1][1][1])
     test_wait("Lamp expected to be OFF. Press enter to continue.")
     
-    lamp.update(datetime.time(6, 30, 5, 0, tz), scheme[1])
+    lamp.update(datetime.time(6, 30, 5, 0, tz), scheme[1][1][1])
     test_wait("Lamp expected to be ON. Press enter to continue.")
     
-    lamp.update(datetime.time(8, 30, 5, 0, tz), scheme[1])
+    lamp.update(datetime.time(8, 30, 5, 0, tz), scheme[1][1][1])
     test_wait("Lamp expected to be ON. Press enter to continue.")
     
-    lamp.update(datetime.time(9, 10, 5, 0, tz), scheme[1])
+    lamp.update(datetime.time(9, 10, 5, 0, tz), scheme[1][1][1])
     test_wait("Lamp expected to be OFF. Press enter to continue.")
     
-    lamp.update(datetime.time(18, 40, 5, 0, tz), scheme[1])         # after sunset but within offset
+    lamp.update(datetime.time(18, 40, 5, 0, tz), scheme[1][1][1])         # after sunset but within offset
     test_wait("Lamp expected to be OFF. Press enter to continue.")
     
-    lamp.update(datetime.time(18, 59, 5, 0, tz), scheme[1])
+    lamp.update(datetime.time(18, 59, 5, 0, tz), scheme[1][1][1])
     test_wait("Lamp expected to be ON. Press enter to continue.")
     
-    lamp.update(datetime.time(22, 29, 5, 0, tz), scheme[1])
+    lamp.update(datetime.time(22, 29, 5, 0, tz), scheme[1][1][1])
     test_wait("Lamp expected to be ON. Press enter to continue.")
     
-    lamp.update(datetime.time(22, 30, 5, 0, tz), scheme[1])
+    lamp.update(datetime.time(22, 30, 5, 0, tz), scheme[1][1][1])
     test_wait("Lamp expected to be OFF. Press enter to continue.")
 
 
 def test_wait(s) :
-    raw_input(s)
+    input(s)
     
     
 
