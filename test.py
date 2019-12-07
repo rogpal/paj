@@ -42,7 +42,6 @@ def test_serialize() :
     print (str(lamp2b.mode) + " supposed to be off.")
 
 
-
 def test_interval() :
     tz = tzlocal.get_localzone()
     place = Place(nkpCoord())

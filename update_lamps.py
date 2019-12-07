@@ -4,7 +4,7 @@ import scheme
 import place
 
 nkp = place.Place(place.nkpCoord())
-nkp.findSunTimes()
+nkp.updateSunTimes()
 myscheme = scheme.murklanScheme(nkp)
 lamp.update(myscheme)
 
