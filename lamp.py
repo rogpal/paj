@@ -26,13 +26,13 @@ class Lamp :
 
     def on(self) :
         for x in range(self.tries):
-            call(['tdtool', '--on', str(self.index)])
+            call(['/usr/local/bin/tdtool', '--on', str(self.index)])
             if x < self.tries - 1:
                 time.sleep(2)
 
     def off(self) :
         for x in range(self.tries):
-            call(['tdtool', '--off', str(self.index)])
+            call(['/usr/local/bin/tdtool', '--off', str(self.index)])
             if x < self.tries - 1:
                 time.sleep(2)
 
