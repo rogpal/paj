@@ -3,8 +3,10 @@ import datetime
 import pytz
 import tzlocal
 
+from scheme import murklanScheme
 from lamp import Lamp
 from lamp import LampMode
+from lamp import update
 from place import Place
 from place import nkpCoord
 from interval import TimeInterval
@@ -45,7 +47,7 @@ def test_serialize() :
 def test_interval() :
     tz = tzlocal.get_localzone()
     place = Place(nkpCoord())
-    place.findSunTimes()
+    place.updateSunTimes()
     interval = TimeInterval(SunriseTimepoint(datetime.timedelta(hours = 1), place),
                             AbsoluteTimepoint(datetime.time(13, 10, 5, 0, tz)))
     print (str(interval.within(datetime.time(12, 10, 5, 0, tz))) + ' expected true.')
@@ -59,7 +61,7 @@ def test_interval() :
 def test_lamp() :
     tz = tzlocal.get_localzone()
     place = Place(nkpCoord())
-    place.findSunTimes()
+    place.updateSunTimes()
 
     scheme = murklanScheme(place)
     lamp = Lamp(1)
@@ -96,4 +98,9 @@ def test_wait(s) :
     input(s)
     
     
-
+def test_update() :
+    nkp = Place(nkpCoord())
+    nkp.updateSunTimes()
+    myscheme = murklanScheme(nkp)
+    update(myscheme)
+    

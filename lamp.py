@@ -1,5 +1,6 @@
 
 from place import Place
+from scheme import Weekday
 
 from enum import Enum
 from subprocess import call
@@ -36,7 +37,6 @@ class Lamp :
                 time.sleep(2)
 
     def update(self, time, lampscheme) :
-        print("Updating with " + str(lampscheme))
         on = False
         for interval in lampscheme :
             if(interval.within(time) ) :
@@ -66,7 +66,7 @@ class Lamp :
 
 def update(scheme) :
     present = datetime.datetime.now().timetz()
-    weekday = datetime.datetime.today().weekday()
+    weekday = Weekday(datetime.datetime.today().weekday())
 
     # if there is a file, use it
     filename = 'lamp.db'
