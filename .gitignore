@@ -1,0 +1,5 @@
+env/*
+*~
+/lamps.db
+/suntimes.cache
+/tdtool
