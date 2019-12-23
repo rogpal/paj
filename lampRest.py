@@ -12,11 +12,20 @@ class LampOff(Resource):
         lamp1 = lamp.Lamp(lampno)
         lamp1.off()
         return "OK"
+
+
+class LampOn(Resource):
+    def get(self, lampno):
+        lamp1 = lamp.Lamp(lampno)
+        lamp1.on()
+        return "OK"
+
+    
         #return {'employees': [i[0] for i in query.cursor.fetchall()]} # Fetches first column that is Employee ID
 
 
 
-#api.add_resource(LampOn, '/lampon/<lampno>')
+api.add_resource(LampOn, '/lampon/<lampno>')
 api.add_resource(LampOff, '/lampoff/<lampno>')
 
 if __name__ == '__main__':
