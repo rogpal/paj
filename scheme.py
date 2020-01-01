@@ -64,14 +64,14 @@ def murklanScheme(place) :
 
 	       # christmas stuff
                6 : [ TimeInterval(AbsoluteTimepoint(datetime.time(7, 30, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(9, 39, 0, 0, tz))),
-                     TimeInterval(AbsoluteTimepoint(datetime.time(15, 30, 0, 0, tz)),
+                                  AbsoluteTimepoint(datetime.time(11, 0, 0, 0, tz))),
+                     TimeInterval(AbsoluteTimepoint(datetime.time(15, 0, 0, 0, tz)),
                                   AbsoluteTimepoint(datetime.time(23, 56, 0, 0, tz))) ],
 
 
                7 : [ TimeInterval(AbsoluteTimepoint(datetime.time(7, 40, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(9, 30, 0, 0, tz))),
-                     TimeInterval(AbsoluteTimepoint(datetime.time(15, 30, 0, 0, tz)),
+                                  AbsoluteTimepoint(datetime.time(10, 50, 0, 0, tz))),
+                     TimeInterval(AbsoluteTimepoint(datetime.time(15, 0, 0, 0, tz)),
                                   AbsoluteTimepoint(datetime.time(23, 56, 0, 0, tz))) ],
 
 	       # Julia
@@ -137,14 +137,14 @@ def murklanScheme(place) :
 
 	       # christmas stuff
                6 : [ TimeInterval(AbsoluteTimepoint(datetime.time(6, 10, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(8, 39, 0, 0, tz))),
+                                  AbsoluteTimepoint(datetime.time(10, 50, 0, 0, tz))),
                      TimeInterval(AbsoluteTimepoint(datetime.time(15, 30, 0, 0, tz)),
                                   AbsoluteTimepoint(datetime.time(22, 10, 0, 0, tz))) ],
 
 
                7 : [ TimeInterval(AbsoluteTimepoint(datetime.time(6, 20, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(8, 30, 0, 0, tz))),
-                     TimeInterval(AbsoluteTimepoint(datetime.time(15, 30, 0, 0, tz)),
+                                  AbsoluteTimepoint(datetime.time(10, 30, 0, 0, tz))),
+                     TimeInterval(AbsoluteTimepoint(datetime.time(15, 0, 0, 0, tz)),
                                   AbsoluteTimepoint(datetime.time(22, 20, 0, 0, tz))) ],
 
 	       # Julia
