@@ -143,7 +143,6 @@ def murklanScheme(place) :
                 
                7 : [ TimeInterval(AbsoluteTimepoint(datetime.time(6, 20, 0, 0, tz)),
                                   SunriseTimepoint(datetime.timedelta(minutes = 20))),    # off 20 min after sunrise                                  
-                                  AbsoluteTimepoint(datetime.time(10, 30, 0, 0, tz))),
                      TimeInterval(SunsetTimepoint(datetime.timedelta(-30)),               # on 30 minutes before sunset
                                   AbsoluteTimepoint(datetime.time(22, 20, 0, 0, tz))) ],
 
