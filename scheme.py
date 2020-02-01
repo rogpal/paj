@@ -70,8 +70,8 @@ def murklanScheme(place) :
 
 
                7 : [ TimeInterval(AbsoluteTimepoint(datetime.time(7, 40, 0, 0, tz)),
-                                  SunriseTimepoint(datetime.timedelta(minutes = 20))),    # off 20 min after sunrise
-                     TimeInterval(SunsetTimepoint(datetime.timedelta(-30)),               # on 30 minutes before sunset
+                                  SunriseTimepoint(datetime.timedelta(minutes = 20)), place),    # off 20 min after sunrise
+                     TimeInterval(SunsetTimepoint(datetime.timedelta(-30), place),                      # on 30 minutes before sunset
                                   AbsoluteTimepoint(datetime.time(23, 56, 0, 0, tz))) ],
 
 	       # Julia
@@ -142,8 +142,8 @@ def murklanScheme(place) :
                                   AbsoluteTimepoint(datetime.time(22, 10, 0, 0, tz))) ],
                 
                7 : [ TimeInterval(AbsoluteTimepoint(datetime.time(6, 20, 0, 0, tz)),
-                                  SunriseTimepoint(datetime.timedelta(minutes = 20))),    # off 20 min after sunrise                                  
-                     TimeInterval(SunsetTimepoint(datetime.timedelta(-30)),               # on 30 minutes before sunset
+                                  SunriseTimepoint(datetime.timedelta(minutes = 20)), place),    # off 20 min after sunrise                                  
+                     TimeInterval(SunsetTimepoint(datetime.timedelta(-30), place),               # on 30 minutes before sunset
                                   AbsoluteTimepoint(datetime.time(22, 20, 0, 0, tz))) ],
 
 	       # Julia
