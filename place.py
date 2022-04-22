@@ -1,5 +1,5 @@
 import json
-import urllib.request
+import requests
 
 import datetime
 import pytz
@@ -43,13 +43,15 @@ class Place :
     @staticmethod
     def fetchSunTimes(coord, date = None) :
         print("Fetching")
-        url = 'http://api.sunrise-sunset.org/json?lat=' + \
+        
+        url = 'https://api.sunrise-sunset.org/json?lat=' + \
               coord.lat + '&lng=' + coord.lng + \
               '&formatted=0'
         if not (date is None):
             url += '&date=' + date.ctime()
-        response = urllib.request.urlopen(url)
-        html = response.read()
+
+        response = requests.get(url)
+        html = response.text
         j = json.loads(html)
         return (pytz.utc.localize(datetime.datetime.strptime(j['results']['sunrise'],
                                                              '%Y-%m-%dT%H:%M:%S+00:00')),
