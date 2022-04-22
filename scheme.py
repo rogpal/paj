@@ -81,7 +81,7 @@ def murklanScheme(place) :
                                   AbsoluteTimepoint(datetime.time(22, 0, 0, 0, tz))) ],
 
 	       # Ludvig
-               9 : [ TimeInterval(AbsoluteTimepoint(datetime.time(16, 5, 0, 0, tz)),
+               9 : [ TimeInterval(DarkAndAfter(datetime.time(16, 5, 0, 0, tz), place),
                                   AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ],
 
                # Dragon foot
@@ -99,9 +99,13 @@ def murklanScheme(place) :
 
                # Outside back
                13 : [ TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = -30), place),       # on half hour before sunset
-                                   AbsoluteTimepoint(datetime.time(23, 00, 0, 0, tz))) ]            # off at 23:00
+                                   AbsoluteTimepoint(datetime.time(23, 00, 0, 0, tz))) ],           # off at 23:00
 
+               # Hallway
+               14 : [ TimeInterval(AbsoluteTimepoint(datetime.time(8, 0, 0, 0, tz)),                # on at 08:00
+                                   AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ]            # off at 22:30
 
+                
              }
 
 
@@ -153,8 +157,8 @@ def murklanScheme(place) :
                                   AbsoluteTimepoint(datetime.time(21, 30, 0, 0, tz))) ],
 
 	       # Ludvig
-               9 : [ TimeInterval(AbsoluteTimepoint(datetime.time(16, 10, 0, 0, tz)),
-                                  AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ],
+               9 : [ TimeInterval(DarkAndAfter(datetime.time(16, 10, 0, 0, tz), place),
+                                  AbsoluteTimepoint(datetime.time(22, 0, 0, 0, tz))) ],
 
                # Dragon foot
                10 : [ TimeInterval(DarkAndAfter(datetime.time(18, 00, 0, 0, tz), place),     # on at 18:00 and dark
@@ -171,8 +175,13 @@ def murklanScheme(place) :
 
                # Outside back
                13 : [ TimeInterval(SunsetTimepoint(datetime.timedelta(minutes = -30), place),       # on half hour before sunset
-                                   AbsoluteTimepoint(datetime.time(23, 00, 0, 0, tz))) ]            # off at 23:00
+                                   AbsoluteTimepoint(datetime.time(23, 00, 0, 0, tz))) ],            # off at 23:00
 
+               # Hallway
+               14 : [ TimeInterval(AbsoluteTimepoint(datetime.time(16, 0, 0, 0, tz)),          # on 16:00
+                                   AbsoluteTimepoint(datetime.time(22, 30, 0, 0, tz))) ]       # off at 22:30
+                
+                
 
              }
 
